@@ -56,7 +56,6 @@ public class Principal {
                     break;
                 default:
                     System.out.println("Opción inválida");
-                    break;
             }
         }
     }
@@ -64,7 +63,7 @@ public class Principal {
     private DatosLibro getDatosLibro() {
         System.out.println("Escribe el nombre del libro que deseas buscar: ");
         var nombreLibro = sc.nextLine();
-        var json = consumoAPI.obtenerDatos(URL_BASE + nombreLibro.replace(" ", "%20"));
+        var json = consumoAPI.obtenerDatos(URL_BASE + nombreLibro.replace(" ", "+").toLowerCase());
         System.out.println(json);
         DatosLibro datos = conversor.obtenerDatos(json, DatosLibro.class);
         return datos;

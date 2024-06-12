@@ -1,37 +1,36 @@
 package com.aluracursos.literalura.model;
 
 import jakarta.persistence.*;
-import java.util.List;
-import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "libros")
 public class Libro {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
     private String titulo;
     @Enumerated(EnumType.STRING)
     private Idioma idioma;
     private Integer numeroDescargas;
     @ManyToOne
     private Autor autor;
+
     public Libro() {
 
     }
 
-    public Libro(DatosLibro datosLibro) {
+    public Libro(DatosLibro datosLibro){
         this.id = datosLibro.id();
         this.titulo = datosLibro.titulo();
         this.idioma = Idioma.fromString(datosLibro.idiomas());
         this.numeroDescargas = datosLibro.numeroDescargas();
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -69,11 +68,12 @@ public class Libro {
 
     @Override
     public String toString() {
-        return "Libro: " +
-                "id= " + id +
-                ", titulo=' " + titulo + '\'' +
-                ", idioma= " + idioma +
-                ", número descargas= " + numeroDescargas +
-                ", autor= " + autor;
+        return "Libro{" +
+                "id=" + id +
+                ", titulo='" + titulo + '\'' +
+                ", idioma=" + idioma +
+                ", numeroDescargas=" + numeroDescargas +
+                ", autor=" + autor +
+                '}';
     }
 }

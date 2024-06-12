@@ -18,9 +18,11 @@ public class Autor {
     private List<Libro> libros;
 
     public Autor(){
+
     }
 
     public Autor(DatosAutor datosAutor){
+        this.id = getId();
         this.nombre = datosAutor.nombre();
         this.fechaNacimiento = datosAutor.fechaNacimiento();
         this.fechaFallecimiento = datosAutor.fechaFallecimiento();
@@ -68,10 +70,12 @@ public class Autor {
 
     @Override
     public String toString() {
-        return "Autor: " +
-                "id= " + id +
-                "Nombre=' " + nombre + '\n' +
-                "Fecha nacimiento= " + fechaNacimiento +
-                "Fecha Fallecimiento= " + fechaFallecimiento;
+        return "Autor{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", fechaNacimiento=" + fechaNacimiento +
+                ", fechaFallecimiento=" + fechaFallecimiento +
+                ", libros=" + libros +
+                '}';
     }
 }
